@@ -39,7 +39,8 @@ module.exports = {
           disable: false
         }).extract({
           use: [
-            { loader: "css-loader" }, 
+            { loader: "css-loader" },
+            { loader: "postcss-loader" },
             { loader: "sass-loader" }
           ],
           fallback: "style-loader"
