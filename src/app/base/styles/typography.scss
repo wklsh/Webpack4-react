@@ -1,0 +1,19 @@
+html {
+	font-size: 62.5%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+
+	@media (max-width:1200px) {
+		font-size: 60%;
+	}
+
+	@media (max-width:767px) {
+		font-size: 58%;
+	}
+}
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1.6rem;
+}

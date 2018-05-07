@@ -1,0 +1,49 @@
+//app rules
+//only the top level rules here
+@charset 'utf-8';
+
+//Top level container
+.app__main {
+  position: relative;
+  top: 7rem;
+  min-height: 100vh;
+
+  @media print {
+    top: 0;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+  }
+
+}
+
+//Route transitions
+.transition__crossfade {
+  &-enter,
+  &-exit {
+    transition: opacity .2s ease-out;
+  }
+
+  &-enter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+  }
+
+  &-enter-active {
+    z-index: 2;
+    opacity: 1;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active {
+    z-index: 1;
+    opacity: 0;
+  }
+
+}

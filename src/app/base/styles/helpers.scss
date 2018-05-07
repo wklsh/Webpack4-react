@@ -1,0 +1,122 @@
+//modular and reusable rules
+//meant to be used on multiple elements throughout the app
+@charset 'utf-8';
+
+.animated,
+.animated::before,
+.animated::after {
+  backface-visibility: hidden;
+  transition: all .2s ease-out;
+}
+
+.no-select {
+  user-select: none;
+  webkit-touch-callout: none;
+}
+
+.no-drag {
+  user-drag: none;
+}
+
+.circle {
+  z-index: 1;
+  // z-index used to fix Chrome rounded corner transition bug
+  border-radius: 100%;
+}
+
+.inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.overlay-backing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.click-efx:active {
+  transform: translateY(1px);
+  transition-duration: .1s;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.text {
+  &-thin {
+    font-weight: 100;
+  }
+
+  &-extra-light {
+    font-weight: 200;
+  }
+
+  &-light {
+    font-weight: 300;
+  }
+
+  &-semi-bold {
+    font-weight: 600;
+  }
+
+  &-bold {
+    font-weight: 700;
+  }
+
+  &-extra-bold {
+    font-weight: 800;
+  }
+
+}
+
+.btn {
+  cursor: pointer;
+
+  :active .btn-inner {
+    transform: translateY(1px);
+    transition-duration: .1s;
+  }
+
+}
+
+.error {
+  color: #bd131f;
+  animation: shake ease-out .3s;
+}
+
+/* vertical centering */
+.v-center-holder {
+  .no-flex &.pos-rel {
+    position: relative;
+  }
+
+  .no-flex &.pos-abs {
+    position: absolute;
+  }
+
+  .no-flex .v-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @supports (display:flex) {
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+  }
+
+}
