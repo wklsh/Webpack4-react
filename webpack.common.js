@@ -21,25 +21,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/, 
-        include: [
-          path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, 'node_modules')
-        ], 
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: {loader:"css-loader", options: { url:false, minimize:true }}
-        })
-      },
-
-      {
-        test: /\.scss$/,
-        use: new ExtractTextPlugin({
-          filename: "css/[name].[hash].css",
-          disable: false
-        }).extract({
+        test: /\.[s]css?$/, 
+        exclude: path.resolve(__dirname, 'node_modules'),
+        use: ExtractTextPlugin.extract({
           use: [
-            { loader: "css-loader" },
+            { loader: "css-loader", options: { url: false, minimize:true }},
             { loader: "postcss-loader" },
             { loader: "sass-loader" }
           ],
@@ -49,8 +35,8 @@ module.exports = {
 
       {
         test: /\.js[x]?$/, 
-        include: path.resolve(__dirname, 'src'), 
-        exclude: /node_modules/, 
+        include: path.resolve(__dirname, 'src'),
+        exclude: path.resolve(__dirname, 'node_modules'),
         loader: 'babel-loader'
       }
     ]
@@ -69,7 +55,8 @@ module.exports = {
 
     new ExtractTextPlugin({
       filename: "css/[name].[hash].css",
-      disable: false
+      disable: false,
+      allChunks: true
     }),
   ]
 };
