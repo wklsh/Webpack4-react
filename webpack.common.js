@@ -14,8 +14,10 @@ module.exports = {
     inline: true,
     progress: true,
     contentBase: './src',
+    watchContentBase: true,
     compress: true,
-    port: 3000
+    host: '0.0.0.0',
+    port: 3000,
   },
 
   module: {
@@ -25,9 +27,9 @@ module.exports = {
         exclude: path.resolve(__dirname, 'node_modules'),
         use: ExtractTextPlugin.extract({
           use: [
-            { loader: "css-loader", options: { url: false, minimize:true }},
-            { loader: "postcss-loader" },
-            { loader: "sass-loader" }
+            { loader: "css-loader", options: { url: false, minimize: false, sourceMap: (process.env.NODE_ENV == 'development' ? true : false) }},
+            { loader: "postcss-loader", options: { sourceMap: (process.env.NODE_ENV == 'development' ? true : false) }},
+            { loader: "sass-loader", options: { sourceMap: (process.env.NODE_ENV == 'development' ? true : false) }}
           ],
           fallback: "style-loader"
         })
@@ -38,7 +40,7 @@ module.exports = {
         include: path.resolve(__dirname, 'src'),
         exclude: path.resolve(__dirname, 'node_modules'),
         loader: 'babel-loader'
-      }
+      },
     ]
   },
   
