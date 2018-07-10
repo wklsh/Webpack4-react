@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
-import { Link, Match, Route } from 'react-router-dom';
-import Routes from './Routes.js';
+import React, { Component } from "react";
+import { MainRoute } from "./Routes/MainRoute.js";
 
-import './styles/index.scss';
+import Header from "ComponentsAlias/Header/Header.js";
 
-import Header from '../components/Header/Header'
+import "./styles/index.scss";
 
 export default class App extends Component {
 	constructor(props) {
@@ -15,13 +14,10 @@ export default class App extends Component {
 		return (
 			<div className="app">
 				<Header />
-				<Link to="/">Home</Link>
-				<Link to="about">About</Link>
 				<div className="app__main">
-					<Routes />
+					<MainRoute />
 				</div>
 			</div>
 		);
 	}
 }
-

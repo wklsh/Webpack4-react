@@ -1,64 +1,37 @@
-//google analytics
-export const gaTrackingID = '';
-
 let settings = {
-	buyerURL: null,
-	ownerURL: null,
+	endpointLogin: null,
+	endpointPassword: null,
+	endpointAuth: null,
 	endpointURL: null,
+	gMapsToken: null
+};
 
-	endpointCreds: null,
-	facebookAppID: null,
-	GoogleAppID: null,
-
-	stripeEndpointURL: null,
-	stripeAPIKey: null,
-	googleMapsAPIKey: null
-}
-switch(process.env.NODE_ENV){
-	case 'development':
-	case 'staging':
-		settings.buyerURL = '';
-		settings.ownerURL = '';
-		settings.endpointURL = "";	
-
-		settings.endpointCreds = {username: '', password: ''};
-		settings.facebookAppID = "";
-		settings.GoogleAppID = "";
-
-		//stripe
-		settings.stripeEndpointURL = "";
-		settings.stripeAPIKey = "";
-
-		//google maps
-		settings.googleMapsAPIKey = '';
-
-	break
-	case 'production':
-		ssettings.buyerURL = '';
-		settings.ownerURL = '';
-		settings.endpointURL = "";	
-
-		settings.endpointCreds = {username: '', password: ''};
-		settings.facebookAppID = "";
-		settings.GoogleAppID = "";
-
-		//stripe
-		settings.stripeEndpointURL = "";
-		settings.stripeAPIKey = "";
-
-		//google maps
-		settings.googleMapsAPIKey = '';
-
-	break
+switch (process.env.NODE_ENV) {
+	case "development":
+		settings.endpointLogin = "loginID";
+		settings.endpointPassword = "password";
+		settings.endpointAuth = "Basic " + btoa(settings.endpointLogin + ":" + settings.endpointPassword);
+		settings.endpointURL = "https://api.openweathermap.org";
+		settings.gMapsToken = "";
+		break;
+	case "staging":
+		settings.endpointLogin = "";
+		settings.endpointPassword = "";
+		settings.endpointAuth = "";
+		settings.endpointURL = "";
+		settings.gMapsToken = "";
+		break;
+	case "production":
+		settings.endpointLogin = "";
+		settings.endpointPassword = "?g9DRLP!2kW";
+		settings.endpointAuth = "";
+		settings.endpointURL = "";
+		settings.gMapsToken = "";
+		break;
 }
 
-export const buyerURL = settings.buyerURL;
-export const ownerURL = settings.ownerURL;
+export const endpointLogin = settings.endpointLogin;
+export const endpointPassword = settings.endpointPassword;
+export const endpointAuth = settings.endpointAuth;
 export const endpointURL = settings.endpointURL;
-export const endpointCreds = settings.endpointCreds;
-export const facebookAppID = settings.facebookAppID;
-export const GoogleAppID = settings.GoogleAppID;
-export const stripeEndpointURL = settings.stripeEndpointURL;
-export const stripeAPIKey = settings.stripeAPIKey;
-export const wpEndpointURL = settings.wpEndpointURL;
-export const googleMapsAPIKey = settings.googleMapsAPIKey;
+export const gMapsToken = settings.gMapsToken;
