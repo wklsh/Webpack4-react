@@ -5,11 +5,10 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import thunk from "redux-thunk";
 import { persistStore, autoRehydrate, createPersistor } from "redux-persist";
-import { localStorage } from 'redux-persist/lib/storage'
+import { localStorage } from "redux-persist/lib/storage";
 
-
-import reducers from "./redux/";
-import App from "./base/App.js";
+import reducers from "ReduxAlias/index.js";
+import App from "BaseAlias/App.js";
 
 // ==========================================================================================
 // Offline Mode:
@@ -33,21 +32,22 @@ if (process.env.NODE_ENV == "production") {
 // Check build environment, and enable redux devtools in dev
 // ==========================================================================================
 let store;
+
 if (process.env.NODE_ENV == "development") {
 	store = createStore(
 		reducers,
 		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 		compose(
-			applyMiddleware(thunk),
-			autoRehydrate()
+			applyMiddleware(thunk)
+			// autoRehydrate()
 		)
 	);
 } else {
 	store = createStore(
 		reducers,
 		compose(
-			applyMiddleware(thunk),
-			autoRehydrate()
+			applyMiddleware(thunk)
+			// autoRehydrate()
 		)
 	);
 }
@@ -55,8 +55,9 @@ if (process.env.NODE_ENV == "development") {
 // ==========================================================================================
 // Render
 // ==========================================================================================
-const sessionPersistor = persistStore(store, { storage: localStorage, blacklist: [""] }, () => {
+const sessionPersistor = persistStore(store, null, () => {
 	let basename = "/";
+
 	ReactDOM.render(
 		<Provider store={store}>
 			<BrowserRouter basename={basename}>
