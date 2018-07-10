@@ -5,7 +5,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import thunk from "redux-thunk";
 import { persistStore, autoRehydrate, createPersistor } from "redux-persist";
-import { asyncSessionStorage, localStorage } from "redux-persist/storages";
+import { localStorage } from 'redux-persist/lib/storage'
+
 
 import reducers from "./redux/";
 import App from "./base/App.js";
