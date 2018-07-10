@@ -56,3 +56,8 @@ lib
 # Dist
 dist
 dist/**/*
+
+
+# Atom plugin: imdone
+.imdone
+.imdone/**/*
