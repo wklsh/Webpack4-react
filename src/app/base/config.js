@@ -23,7 +23,7 @@ switch (process.env.NODE_ENV) {
 		break;
 	case "production":
 		settings.endpointLogin = "";
-		settings.endpointPassword = "?g9DRLP!2kW";
+		settings.endpointPassword = "";
 		settings.endpointAuth = "";
 		settings.endpointURL = "";
 		settings.gMapsToken = "";
