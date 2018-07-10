@@ -3,12 +3,67 @@
 //// -----------------------------------------------------------------
 //// ** DO NOT INCLUDE COMMON / PROD SPECIFIC SETTINGS IN HERE ***
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const path = require('path');
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const path = require("path");
+const merge = require("webpack-merge");
+const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
-  entry: path.resolve(__dirname, 'src/app/index.js'),
+	mode: "development",
 
-  devtool: 'inline-source-map',
+	output: {
+		path: path.resolve(__dirname, "dist"),
+		filename: "js/[name].js"
+	},
+
+	devServer: {
+		historyApiFallback: true,
+		inline: true,
+		progress: true,
+		contentBase: "./src",
+		watchContentBase: true,
+		compress: true,
+		host: "0.0.0.0",
+		port: 3000,
+		headers: {
+			"Access-Control-Allow-Origin": "*"
+		}
+	},
+
+	devtool: "cheap-module-source-map",
+
+	module: {
+		rules: [
+			{
+				test: /\.(css|scss)$/i,
+				use: [
+					{
+						loader: "style-loader",
+						options: {
+							sourceMap: true
+						}
+					},
+					{
+						loader: "css-loader",
+						options: {
+							url: true,
+							minimize: false,
+							sourceMap: true
+						}
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							sourceMap: true
+						}
+					},
+					{
+						loader: "sass-loader",
+						options: {
+							sourceMap: true
+						}
+					}
+				]
+			}
+		]
+	}
 });
