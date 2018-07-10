@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/app/index.js",
   "scripts": {
-    "build": "NODE_ENV=development webpack-dev-server --open --mode=development --config webpack.dev.js",
-    "prod": "webpack --mode=production --config webpack.prod.js"
+    "build": "NODE_ENV=development webpack-dev-server --hot --config webpack.dev.js",
+    "build:prod": "NODE_ENV=production webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +16,14 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^0.28.11",
+    "css-mqpacker": "^6.0.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.3.1",
+    "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.0",
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-loader": "^2.1.5",
@@ -31,7 +36,6 @@
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "clean-webpack-plugin": "^0.1.19",
     "offline-plugin": "^5.0.3",
     "react": "^16.3.2",
     "react-code-splitting": "^1.2.1",
