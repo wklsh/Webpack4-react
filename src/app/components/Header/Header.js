@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Link } from "react-router-dom";
 
 class Header extends Component {
 	constructor(props) {
@@ -9,21 +9,18 @@ class Header extends Component {
 	}
 
 	render() {
-		console.log(this.props.ui);
-		if(this.props.ui[this.props.ui.length-1].hideHeader) return null;
-
-
 		return (
 			<header className="header">
-				Header
+				<Link to="/">Landing</Link>
+				<Link to="/page-two">Page two</Link>
 			</header>
 		);
 	}
 }
 
 const mapStateToProps = function(store) {
-    return {
-    	ui: store.ui
-    }
-}
-export default Header = connect(mapStateToProps)(Header)
+	return {
+		ui: store.ui
+	};
+};
+export default (Header = connect(mapStateToProps)(Header));

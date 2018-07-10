@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
 
-import {ui} from './ui'
-const reducers = combineReducers({ui})
-export default reducers
+import { test } from "./test";
+const reducers = combineReducers({ test });
+export default reducers;
