@@ -1,7 +1,15 @@
 module.exports = {
-	plugins: [
-		require('autoprefixer'),
-		require('postcss-flexbugs-fixes'),
-		require('cssnano')
-	]
-}
+	plugins: {
+		autoprefixer: {
+			browsers: ["defaults"]
+		},
+		cssnano: {
+			zindex: false,
+			reduceIdents: false
+		},
+
+		"postcss-flexbugs-fixes": {},
+
+		"css-mqpacker": {}
+	}
+};
