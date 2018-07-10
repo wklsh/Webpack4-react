@@ -1,19 +1,76 @@
+// Font import
+@import url("https://fonts.googleapis.com/css?family=Chivo:300,300i,400,400i,700,700i,900,900i");
+
+@import "~BaseAlias/styles/mixins";
+
 html {
 	font-size: 62.5%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
 
-	@media (max-width:1200px) {
+	@media (max-width: 1200px) {
 		font-size: 60%;
 	}
 
-	@media (max-width:767px) {
+	@media (max-width: 767px) {
 		font-size: 58%;
 	}
 }
 
 body {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: "Chivo", Helvetica, Arial, sans-serif;
 	font-size: 1.6rem;
+}
+
+.bodyLight {
+	&--30 {
+		@include font-weight(light);
+		font-size: 3rem;
+	}
+}
+
+.body {
+	&--14 {
+		font-size: 1.4rem;
+	}
+
+	&--24 {
+		font-size: 2.4rem;
+	}
+	&--30 {
+		font-size: 3rem;
+	}
+}
+
+.header {
+	&--10 {
+		@include font-weight(bold);
+		font-size: 1rem;
+	}
+	&--12 {
+		@include font-weight(bold);
+		font-size: 1.2rem;
+	}
+	&--14 {
+		@include font-weight(bold);
+		font-size: 1.4rem;
+	}
+	&--16 {
+		@include font-weight(bold);
+		font-size: 1.6rem;
+	}
+	&--18 {
+		@include font-weight(bold);
+		font-size: 1.8rem;
+	}
+
+	&--24 {
+		@include font-weight(bold);
+		font-size: 2.4rem;
+	}
+	&--30 {
+		@include font-weight(bold);
+		font-size: 3rem;
+	}
 }
