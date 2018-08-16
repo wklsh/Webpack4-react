@@ -24,10 +24,9 @@ Clone and install in your local directory.
 
 
 ```
-git clone https://bitbucket.org/codigo/webfront-react-boilerplate.git
-cd react-webpack-boilerplate
-yarn install
-yarn start
+git clone REPO-URL
+npm install
+npm run build
 ```
 
 ## Structure of the project
