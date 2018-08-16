@@ -1,3 +1,5 @@
+import jwtDecode from "jwt-decode";
+
 //scroll to the very top
 //will be called every time the page changes in routes.js
 let scrollToTopTimer;
@@ -221,4 +223,47 @@ export const areArraysDifferent = (arr1, arr2) => {
 // Get latest array item
 export const getLastArrayItem = (array) => {
 	return array[array.length - 1];
+};
+
+// Format style for address lines
+export const addressFormatLayout = (scope) => {
+	const addressItemID = scope.id;
+	const blockNo = scope.block_number;
+	const buildingName = scope.building_name || scope.trade_name;
+	const street = scope.street;
+	const tradeName = scope.trade_name;
+	const postalCode = scope.postal_code;
+	const addressLatLongID = scope.address_id;
+
+	const addressFormatted = blockNo
+		? buildingName
+			? "Blk " + blockNo + " " + buildingName + ", " + street
+			: blockNo
+				? "Blk " + blockNo + ", " + street
+				: street
+		: tradeName
+			? street
+				? tradeName + ", " + street
+				: tradeName
+			: street
+				? street
+				: "";
+
+	return {
+		addressItemID,
+		blockNo,
+		buildingName,
+		street,
+		tradeName,
+		addressFormatted,
+		postalCode,
+		addressLatLongID
+	};
+};
+
+// Check if JWT Token is valid by comparing its expiry time with current
+export const isAccessTokenValid = (accessToken) => {
+	const decodeJWT = accessToken ? jwtDecode(accessToken) : "";
+	const currTime = new Date().getTime() / 1000;
+	return currTime < decodeJWT.exp;
 };
