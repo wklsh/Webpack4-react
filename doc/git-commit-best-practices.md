@@ -14,8 +14,10 @@
 
 `chore` - updating build tasks, package manager configs, etc; no production code change
 
-
 ###### Optionals
+
 `img` - updating of image assets
 
 `css` - updating of various stylesheet assets
+
+`external` - external remarks; removing components / copy changes requested from others
