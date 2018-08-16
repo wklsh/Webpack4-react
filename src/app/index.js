@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { compose, createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import thunk from "redux-thunk";
-import { persistStore, autoRehydrate, createPersistor } from "redux-persist";
-import { localStorage } from "redux-persist/lib/storage";
+import { Provider } from "react-redux";
+import { compose, createStore, applyMiddleware } from "redux";
+import { persistStore } from "redux-persist";
 
 import reducers from "ReduxAlias/index.js";
 import App from "BaseAlias/App.js";
@@ -36,15 +35,7 @@ const devTools =
 		? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 		: "";
 
-const store = createStore(
-	reducers,
-	devTools,
-	compose(
-		applyMiddleware(thunk),
-		autoRehydrate(),
-		reduxReset()
-	)
-);
+const store = createStore(reducers, devTools, compose(applyMiddleware(thunk)));
 
 // ==========================================================================================
 // Render
