@@ -21,7 +21,9 @@
     icons
       //put reusable assets here
       //e.g. arrows, hearts, ticks, crosses
-    ...and other folders to hold images according to its own respective pages 
+      //...and other folders to hold images according to its own respective pages
+    views
+      //page-specific image assets
   media
     //put videos here
   index.html
