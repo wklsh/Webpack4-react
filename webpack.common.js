@@ -45,6 +45,7 @@ module.exports = {
 		alias: {
 			AppAlias: path.resolve(__dirname, "src/app"),
 			BaseAlias: path.resolve(__dirname, "src/app/base"),
+			StyleAlias: path.resolve(__dirname, "src/app/base/styles"),
 			ComponentsAlias: path.resolve(__dirname, "src/app/components"),
 			ReduxAlias: path.resolve(__dirname, "src/app/redux"),
 			ImgAlias: path.resolve(__dirname, "src/img")
