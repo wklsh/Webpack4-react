@@ -147,8 +147,13 @@
 }
 
 .is {
-	&--hidden {
+	&--dNone {
 		display: none !important;
+	}
+	
+	&--hidden {
+		visibility: hidden;
+
 	}
 }
 
