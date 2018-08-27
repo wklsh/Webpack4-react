@@ -8,6 +8,7 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const WebpackBar = require("webpackbar");
 
 module.exports = {
 	entry: {
@@ -53,6 +54,8 @@ module.exports = {
 	},
 
 	plugins: [
+		new WebpackBar(),
+		
 		new HtmlWebPackPlugin({
 			template: "./src/index.html",
 			filename: "./index.html",
