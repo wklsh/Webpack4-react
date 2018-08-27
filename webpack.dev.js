@@ -26,6 +26,7 @@ module.exports = merge(common, {
 		compress: true,
 		host: "0.0.0.0",
 		port: 3000,
+		quiet: true,
 		headers: {
 			"Access-Control-Allow-Origin": "*"
 		}
