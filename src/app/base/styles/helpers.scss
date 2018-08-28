@@ -163,9 +163,8 @@
 	}
 }
 
-// Helpers
-.color {
-	&--white {
-		color: white !important;
-	}
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
 }
