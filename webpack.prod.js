@@ -25,7 +25,17 @@ module.exports = merge(common, {
 		filename: "js/[name].[chunkhash].js"
 	},
 
-	devtool: "nosources-source-map",
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				commons: {
+					name: "commons",
+					chunks: "initial",
+					minChunks: 2
+				}
+			}
+		}
+	},
 
 	module: {
 		rules: [
@@ -37,20 +47,20 @@ module.exports = merge(common, {
 						loader: "css-loader",
 						options: {
 							url: true,
-							minimize: process.env.NODE_ENV == "development" ? false : true,
-							sourceMap: process.env.NODE_ENV == "development" ? true : false
+							minimize: true,
+							sourceMap: true
 						}
 					},
 					{
 						loader: "postcss-loader",
 						options: {
-							sourceMap: process.env.NODE_ENV == "development" ? true : false
+							sourceMap: true
 						}
 					},
 					{
 						loader: "sass-loader",
 						options: {
-							sourceMap: process.env.NODE_ENV == "development" ? true : false
+							sourceMap: true
 						}
 					}
 				]
@@ -87,7 +97,7 @@ module.exports = merge(common, {
 
 		// JS Minifications
 		new UglifyJSPlugin({
-			sourceMap: false
+			sourceMap: true
 		}),
 
 		// Offline caching
