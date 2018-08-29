@@ -14,6 +14,8 @@ module.exports = {
 	entry: {
 		app: path.resolve(__dirname, "src/app/index.js")
 	},
+	
+	devtool: "cheap-module-source-map",
 
 	module: {
 		rules: [
