@@ -32,8 +32,6 @@ module.exports = merge(common, {
 		}
 	},
 
-	devtool: "cheap-module-source-map",
-
 	module: {
 		rules: [
 			{
