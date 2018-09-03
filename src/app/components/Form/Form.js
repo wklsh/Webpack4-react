@@ -11,7 +11,7 @@
 ////	<div>
 //// 		<input
 //// 			className="form-control" 			<- REQUIRED: [.form-control] is required to display/hide error labels
-//// 			type="email" 						<- self-explanatory
+//// 			type="text" 						<- self-explanatory
 //// 			required="true" 					<- REQUIRED: lets Form whether to validate input or not
 //// 			minLength={ int } 					<- min-length
 //// 			pattern={ **RegEx** } 				<- Formatting to check
@@ -117,43 +117,46 @@
 ////	*** CHECKBOXES (Supports multiple selection)
 //// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .js-formElements__group
 ////  	========================================================================
-////	<div className="js-multiInputWrapper js-isRequired w-100 js-formElements__group">
-////		<label className="formElements__label">Select the required trips</label>
-////		<div
-////			className="row no-gutters"
-////			onChange={(evt) => {
-////				this.handleShiftPushIntoArray(evt);
-////			}}
-////		>
-////			<label className="col-6 formElements__checkbox_itemWrapper">
-////				<input
-////					type="checkbox"
-////					checked={this.state.inputTripDayShift == "" ? false : null}
-////					value="AM"
-////					className="formElements__checkbox_defaultCheckbox"
-////				/>
-////				<div className="formElements__checkbox_customCheckbox" />
-////				<div className="formElements__checkbox_label label__twoLine">
-////					<p className="header--16">Morning</p>
-////					<p>Bus to School</p>
-////				</div>
-////			</label>
-////			<label className="col-6 formElements__checkbox_itemWrapper">
-////				<input
-////					type="checkbox"
-////					checked={this.state.inputTripDayShift == "" ? false : null}
-////					value="PM"
-////					className="formElements__checkbox_defaultCheckbox"
-////				/>
-////				<div className="formElements__checkbox_customCheckbox" />
-////				<div className="formElements__checkbox_label label__twoLine">
-////					<p className="header--16">Afternoon</p>
-////					<p>Bus from School</p>
-////				</div>
-////			</label>
-////		</div>
-////		<div className="fixedDropdownErrorMsg is--dNone">Please select an option.</div>
-////	</div>
+////
+////    // ====
+////	// JS handler
+////	// ====
+//// 	// Handle find method checkbox onClick
+//// 	handleFindMethod = (evt) => {
+//// 		const item = evt.target.name;
+//// 		const isChecked = evt.target.checked;
+////
+//// 		this.setState((prevState) => ({
+//// 			checkedItems: prevState.checkedItems.set(item, isChecked)
+//// 		}));
+//// 	};
+////
+//// 	// ====
+////	// HTML
+////	// ====
+//// 	<div className="js-multiInputWrapper js-isRequired js-formElements__group">
+//// 		<label className="quoteForm__header">REPLACE ME</label>
+//// 		<div className="clearfix">
+//// 			{this.findMethods.map((item, index) => {
+//// 				return (
+//// 					<label key={index} className="REPLACE_ME_CLASS_WRAPPER">
+//// 						<input
+//// 							type="checkbox"
+//// 							checked={this.state.checkedItems.get(item.name)}
+//// 							name="REPLACE_ME_NAME"
+//// 							value={item.name}
+//// 							className="quoteForm__defaultInputEl--checkbox"
+//// 							onChange={this.handleFindMethod}
+//// 						/>
+//// 						<div className="quoteForm__customInputEl--checkbox" />
+//// 						<div className="quoteForm__checkboxLabel">{item.label}</div>
+//// 					</label>
+//// 				);
+//// 			})}
+//// 		</div>
+//// 		<div className="fixedDropdownErrorMsg is--dNone">Please select an option.</div>
+//// 	</div>
+
 ////
 ////
 ////  	========================================================================
