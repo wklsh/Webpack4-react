@@ -22,7 +22,7 @@
 ////  	========================================================================
 //// 	*** DROPDOWNS ***
 ////  	========================================================================
-//// 	<div className="formElements__group">
+//// 	<div className="js-formElements__group">
 //// 		<label className="formElements__label">Select School</label>
 //// 		<select
 //// 			value={this.state.inputSchoolID || "placeholderVal"}
@@ -52,9 +52,9 @@
 ////
 ////  	========================================================================
 ////	*** RADIO BOXES (Only allows one opt to be selected)
-//// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .formElements__group
+//// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .js-formElements__group
 ////  	========================================================================
-//// 	<div className="js-multiInputWrapper js-isRequired formElements__group">
+//// 	<div className="js-multiInputWrapper js-isRequired js-formElements__group">
 //// 		<label className="REPLACE_ME-LABEL_HEADER">Question</label>
 //// 		<div
 //// 			className=""
@@ -90,9 +90,9 @@
 ////
 ////  	========================================================================
 ////	*** CHECKBOXES (Supports multiple selection)
-//// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .formElements__group
+//// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .js-formElements__group
 ////  	========================================================================
-////	<div className="js-multiInputWrapper js-isRequired w-100 formElements__group">
+////	<div className="js-multiInputWrapper js-isRequired w-100 js-formElements__group">
 ////		<label className="formElements__label">Select the required trips</label>
 ////		<div
 ////			className="row no-gutters"
@@ -136,6 +136,7 @@
 ////  	========================================================================
 //// 	<button type="submit">Log In</button>
 //// </Form>
+////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 import React, { Component } from "react";
@@ -192,10 +193,10 @@ class Form extends React.Component {
 
 			// Target date inputs
 			if (this.formEl[i].classList.contains("formElements__date") && this.formEl[i].value != "") {
-				// Target the closest [formElements__group] and search for its own
+				// Target the closest [js-formElements__group] and search for its own
 				// corresponding fixedDropdownErrorMsg toggle off hidden state
 				this.formEl[i]
-					.closest(".formElements__group")
+					.closest(".js-formElements__group")
 					.querySelector(".fixedDropdownErrorMsg")
 					.classList.remove("d-block");
 				// Add red borders
@@ -327,10 +328,10 @@ class Form extends React.Component {
 				// If validation fails
 				isValid = false;
 
-				// Target the closest [formElements__group] and search for its own
+				// Target the closest [js-formElements__group] and search for its own
 				// corresponding fixedDropdownErrorMsg toggle off hidden state
 				this.formEl[i]
-					.closest(".formElements__group")
+					.closest(".js-formElements__group")
 					.querySelector(".fixedDropdownErrorMsg")
 					.classList.add("d-block");
 				// Add red borders
