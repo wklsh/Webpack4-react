@@ -40,15 +40,3 @@
 		border: 1px solid #dc3545 !important;
 	}
 }
-
-.formElements {
-	&--inputPasswordReadOnly {
-		border: none !important;
-		pointer-events: none;
-		padding-left: 0 !important;
-	}
-
-	&--disabledLighterBackground {
-		background-color: rgba(0, 0, 0, 0.03) !important;
-	}
-}
