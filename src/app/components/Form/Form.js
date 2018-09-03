@@ -54,39 +54,39 @@
 ////	*** RADIO BOXES (Only allows one opt to be selected)
 //// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .formElements__group
 ////  	========================================================================
-////	<div className="js-multiInputWrapper js-isRequired w-100 formElements__group">
-////		<label className="formElements__label">Gender</label>
-////		<div
-////			className="row no-gutters"
-////			onChange={(evt) => {
-////				this.setState({ inputGender: evt.target.value });
-////			}}
-////		>
-////			<label className="col-6 formElements__radio_itemWrapper">
-////				<input
-////					type="radio"
-////					checked={this.state.inputGender == "" ? false : null}
-////					name="gender"
-////					value="male"
-////					className="formElements__radio_defaultRadio"
-////				/>
-////				<div className="formElements__radio_customRadio" />
-////				<div className="formElements__radio_label">Male</div>
-////			</label>
-////			<label className="col-6 formElements__radio_itemWrapper">
-////				<input
-////					type="radio"
-////					checked={this.state.inputGender == "" ? false : null}
-////					name="gender"
-////					value="female"
-////					className="formElements__radio_defaultRadio"
-////				/>
-////				<div className="formElements__radio_customRadio" />
-////				<div className="formElements__radio_label">Female</div>
-////			</label>
-////		</div>
-////		<div className="fixedDropdownErrorMsg">Please select an option.</div>
-////	</div>
+//// 	<div className="js-multiInputWrapper js-isRequired formElements__group">
+//// 		<label className="REPLACE_ME-LABEL_HEADER">Question</label>
+//// 		<div
+//// 			className=""
+//// 			onChange={(evt) => {
+//// 				this.setState({ REPLACE_ME_STATE: evt.target.value });
+//// 			}}
+//// 		>
+//// 			<label className="">
+//// 				<input
+//// 					type="radio"
+//// 					checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_1"}
+//// 					name="REPLACE_ME-CHECKBOX_NAME"
+//// 					value="REPLACE_ME_VALUE_1"
+//// 					className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
+//// 				/>
+//// 				<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
+//// 				<div className="REPLACE_ME-LABEL">Option 1</div>
+//// 			</label>
+//// 			<label className="">
+//// 				<input
+//// 					type="radio"
+//// 					checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_2"}
+//// 					name="REPLACE_ME-CHECKBOX_NAME"
+//// 					value="REPLACE_ME_VALUE_2"
+//// 					className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
+//// 				/>
+//// 				<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
+//// 				<div className="REPLACE_ME-LABEL">Option 2</div>
+//// 			</label>
+//// 		</div>
+//// 		<div className="fixedDropdownErrorMsg">Please select an option.</div>
+//// 	</div>
 ////
 ////  	========================================================================
 ////	*** CHECKBOXES (Supports multiple selection)
