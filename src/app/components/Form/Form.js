@@ -47,7 +47,7 @@
 //// 				  })
 //// 				: null}
 //// 		</select>
-//// 		<div className="fixedDropdownErrorMsg">Please select an option.</div>
+//// 		<div className="fixedDropdownErrorMsg is--dNone">Please select an option.</div>
 //// 	</div>
 ////
 ////  	========================================================================
@@ -56,36 +56,61 @@
 ////  	========================================================================
 //// 	<div className="js-multiInputWrapper js-isRequired js-formElements__group">
 //// 		<label className="REPLACE_ME-LABEL_HEADER">Question</label>
-//// 		<div
-//// 			className=""
-//// 			onChange={(evt) => {
-//// 				this.setState({ REPLACE_ME_STATE: evt.target.value });
-//// 			}}
-//// 		>
-//// 			<label className="">
-//// 				<input
-//// 					type="radio"
-//// 					checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_1"}
-//// 					name="REPLACE_ME-CHECKBOX_NAME"
-//// 					value="REPLACE_ME_VALUE_1"
-//// 					className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
-//// 				/>
-//// 				<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
-//// 				<div className="REPLACE_ME-LABEL">Option 1</div>
-//// 			</label>
-//// 			<label className="">
-//// 				<input
-//// 					type="radio"
-//// 					checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_2"}
-//// 					name="REPLACE_ME-CHECKBOX_NAME"
-//// 					value="REPLACE_ME_VALUE_2"
-//// 					className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
-//// 				/>
-//// 				<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
-//// 				<div className="REPLACE_ME-LABEL">Option 2</div>
-//// 			</label>
-//// 		</div>
-//// 		<div className="fixedDropdownErrorMsg">Please select an option.</div>
+////
+////			<div className="clearfix">
+////				<label className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT_WRAPPER">
+////					<input
+////						type="radio"
+////						checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_1"}
+////						name="REPLACE_ME-CHECKBOX_NAME"
+////						value="REPLACE_ME_VALUE_1"
+////						className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
+////						onChange={(evt) => {
+////							this.setstate({
+////								REPLACE_ME_STATE: evt.target.value
+////							});
+////						}}
+////					/>
+////					<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
+////					<div className="REPLACE_ME-LABEL">Option 1</div>
+////				</label>
+////
+////				<label className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT_WRAPPER">
+////					<input
+////						type="radio"
+////						checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_2"}
+////						name="REPLACE_ME-CHECKBOX_NAME"
+////						value="REPLACE_ME_VALUE_2"
+////						className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
+////						onChange={(evt) => {
+////							this.setstate({
+////								REPLACE_ME_STATE: evt.target.value
+////							});
+////						}}
+////					/>
+////					<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
+////					<div className="REPLACE_ME-LABEL">Option 2</div>
+////				</label>
+////
+////				<label className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT_WRAPPER">
+////					<input
+////						type="radio"
+////						checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_3"}
+////						name="REPLACE_ME-CHECKBOX_NAME"
+////						value="REPLACE_ME_VALUE_3"
+////						className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
+////						onChange={(evt) => {
+////							this.setstate({
+////								REPLACE_ME_STATE: evt.target.value
+////							});
+////						}}
+////					/>
+////					<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
+////					<div className="REPLACE_ME-LABEL">Option 3</div>
+////				</label>
+////			</div>
+////
+////			<div className="fixedDropdownErrorMsg is--dNone">Please select an option.</div>
 //// 	</div>
 ////
 ////  	========================================================================
@@ -127,7 +152,7 @@
 ////				</div>
 ////			</label>
 ////		</div>
-////		<div className="fixedDropdownErrorMsg">Please select an option.</div>
+////		<div className="fixedDropdownErrorMsg is--dNone">Please select an option.</div>
 ////	</div>
 ////
 ////
@@ -187,7 +212,7 @@ class Form extends React.Component {
 			// Target dropdown inputs
 			if (this.formEl[i].tagName == "SELECT" && this.formEl[i].required && this.formEl[i].value != "placeholderVal") {
 				// Triggers when value is no longer default (placeholderVal)
-				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.remove("d-block");
+				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.add("is--dNone");
 				this.formEl[i].classList.remove("is--error");
 			}
 
@@ -198,7 +223,7 @@ class Form extends React.Component {
 				this.formEl[i]
 					.closest(".js-formElements__group")
 					.querySelector(".fixedDropdownErrorMsg")
-					.classList.remove("d-block");
+					.classList.add("is--dNone");
 				// Add red borders
 				this.formEl[i].classList.remove("is--error");
 			}
@@ -221,7 +246,7 @@ class Form extends React.Component {
 								this.formEl[i]
 									.closest(".js-multiInputWrapper")
 									.querySelector(".fixedDropdownErrorMsg")
-									.classList.remove("d-block");
+									.classList.add("is--dNone");
 							}
 						});
 				}
@@ -319,7 +344,7 @@ class Form extends React.Component {
 				// If validation fails
 				isValid = false;
 
-				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.add("d-block");
+				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.remove("is--dNone");
 				this.formEl[i].classList.add("is--error");
 			}
 
@@ -333,7 +358,7 @@ class Form extends React.Component {
 				this.formEl[i]
 					.closest(".js-formElements__group")
 					.querySelector(".fixedDropdownErrorMsg")
-					.classList.add("d-block");
+					.classList.remove("is--dNone");
 				// Add red borders
 				this.formEl[i].classList.add("is--error");
 			}
@@ -349,7 +374,7 @@ class Form extends React.Component {
 					this.formEl[i]
 						.closest(".js-multiInputWrapper")
 						.querySelector(".fixedDropdownErrorMsg")
-						.classList.add("d-block");
+						.classList.remove("is--dNone");
 
 					// Loop through all children input elements to check if theres at least one checked
 					this.formEl[i]
@@ -364,7 +389,7 @@ class Form extends React.Component {
 								this.formEl[i]
 									.closest(".js-multiInputWrapper")
 									.querySelector(".fixedDropdownErrorMsg")
-									.classList.remove("d-block");
+									.classList.add("is--dNone");
 							}
 						});
 				}
