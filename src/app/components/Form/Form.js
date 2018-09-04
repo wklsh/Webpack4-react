@@ -123,12 +123,14 @@
 ////	// ====
 //// 	// Handle find method checkbox onClick
 //// 	handleFindMethod = (evt) => {
-//// 		const item = evt.target.name;
+//// 		const val = evt.target.value;
 //// 		const isChecked = evt.target.checked;
 ////
-//// 		this.setState((prevState) => ({
-//// 			checkedItems: prevState.checkedItems.set(item, isChecked)
-//// 		}));
+//// 		this.setState(
+//// 			(prevState) => ({
+//// 				inputFindMethod: prevState.inputFindMethod.set(val, isChecked)
+//// 			})
+//// 		);
 //// 	};
 ////
 //// 	// ====
@@ -142,9 +144,9 @@
 //// 					<label key={index} className="REPLACE_ME_CLASS_WRAPPER">
 //// 						<input
 //// 							type="checkbox"
-//// 							checked={this.state.checkedItems.get(item.name)}
+//// 							checked={this.state.checkedItems.get(item.value)}
 //// 							name="REPLACE_ME_NAME"
-//// 							value={item.name}
+//// 							value={item.value}
 //// 							className="quoteForm__defaultInputEl--checkbox"
 //// 							onChange={this.handleFindMethod}
 //// 						/>
