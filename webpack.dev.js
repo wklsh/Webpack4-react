@@ -25,8 +25,9 @@ module.exports = merge(common, {
 		watchContentBase: true,
 		compress: true,
 		host: "0.0.0.0",
-		port: 3000,
 		quiet: true,
+		hot: true,
+		port: 3000,
 		headers: {
 			"Access-Control-Allow-Origin": "*"
 		}
