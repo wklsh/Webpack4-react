@@ -4,6 +4,7 @@
 //// ** DO NOT INCLUDE COMMON / PROD SPECIFIC SETTINGS IN HERE ***
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const path = require("path");
+const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 
@@ -65,5 +66,10 @@ module.exports = merge(common, {
 				]
 			}
 		]
-	}
+	},
+	
+	plugins: [
+		// HOT Module
+		new webpack.HotModuleReplacementPlugin()
+	]
 });
