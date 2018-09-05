@@ -8,7 +8,7 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const WebpackBar = require("webpackbar");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 module.exports = {
 	entry: {
@@ -56,7 +56,14 @@ module.exports = {
 	},
 
 	plugins: [
-		new WebpackBar(),
+		new FriendlyErrorsWebpackPlugin({
+			compilationSuccessInfo: {
+				messages: ["Application is running.", "http://localhost:3000"]
+			},
+			// should the console be cleared between each compilation?
+			// default is true
+			clearConsole: true
+		}),
 		
 		new HtmlWebPackPlugin({
 			template: "./src/index.html",
