@@ -59,10 +59,7 @@ module.exports = {
 		new FriendlyErrorsWebpackPlugin({
 			compilationSuccessInfo: {
 				messages: ["Application is running.", "http://localhost:3000"]
-			},
-			// should the console be cleared between each compilation?
-			// default is true
-			clearConsole: true
+			}
 		}),
 		
 		new HtmlWebPackPlugin({
