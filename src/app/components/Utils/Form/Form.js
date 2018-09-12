@@ -11,7 +11,7 @@
 ////	<div>
 //// 		<input
 //// 			className="form-control" 			<- REQUIRED: [.form-control] is required to display/hide error labels
-//// 			type="text" 						<- self-explanatory
+//// 			type="email" 						<- self-explanatory
 //// 			required="true" 					<- REQUIRED: lets Form whether to validate input or not
 //// 			minLength={ int } 					<- min-length
 //// 			pattern={ **RegEx** } 				<- Formatting to check
@@ -22,7 +22,7 @@
 ////  	========================================================================
 //// 	*** DROPDOWNS ***
 ////  	========================================================================
-//// 	<div className="js-formElements__group">
+//// 	<div className="formElements__group">
 //// 		<label className="formElements__label">Select School</label>
 //// 		<select
 //// 			value={this.state.inputSchoolID || "placeholderVal"}
@@ -47,118 +47,88 @@
 //// 				  })
 //// 				: null}
 //// 		</select>
-//// 		<div className="fixedDropdownErrorMsg is--dNone">Please select an option.</div>
+//// 		<div className="fixedDropdownErrorMsg">Please select an option.</div>
 //// 	</div>
 ////
 ////  	========================================================================
 ////	*** RADIO BOXES (Only allows one opt to be selected)
-//// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .js-formElements__group
+//// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .formElements__group
 ////  	========================================================================
-//// 	<div className="js-multiInputWrapper js-isRequired js-formElements__group">
-//// 		<label className="REPLACE_ME-LABEL_HEADER">Question</label>
-////
-////			<div className="clearfix">
-////				<label className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT_WRAPPER">
-////					<input
-////						type="radio"
-////						checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_1"}
-////						name="REPLACE_ME-CHECKBOX_NAME"
-////						value="REPLACE_ME_VALUE_1"
-////						className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
-////						onChange={(evt) => {
-////							this.setstate({
-////								REPLACE_ME_STATE: evt.target.value
-////							});
-////						}}
-////					/>
-////					<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
-////					<div className="REPLACE_ME-LABEL">Option 1</div>
-////				</label>
-////
-////				<label className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT_WRAPPER">
-////					<input
-////						type="radio"
-////						checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_2"}
-////						name="REPLACE_ME-CHECKBOX_NAME"
-////						value="REPLACE_ME_VALUE_2"
-////						className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
-////						onChange={(evt) => {
-////							this.setstate({
-////								REPLACE_ME_STATE: evt.target.value
-////							});
-////						}}
-////					/>
-////					<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
-////					<div className="REPLACE_ME-LABEL">Option 2</div>
-////				</label>
-////
-////				<label className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT_WRAPPER">
-////					<input
-////						type="radio"
-////						checked={this.state.REPLACE_ME_STATE == "REPLACE_ME_VALUE_3"}
-////						name="REPLACE_ME-CHECKBOX_NAME"
-////						value="REPLACE_ME_VALUE_3"
-////						className="REPLACE_ME-DEFAULT_CHECKBOX_ELEMENT"
-////						onChange={(evt) => {
-////							this.setstate({
-////								REPLACE_ME_STATE: evt.target.value
-////							});
-////						}}
-////					/>
-////					<div className="REPLACE_ME-CUSTOM_CHECKBOX_ELEMENT" />
-////					<div className="REPLACE_ME-LABEL">Option 3</div>
-////				</label>
-////			</div>
-////
-////			<div className="fixedDropdownErrorMsg is--dNone">Please select an option.</div>
-//// 	</div>
+////	<div className="js-multiInputWrapper js-isRequired w-100 formElements__group">
+////		<label className="formElements__label">Gender</label>
+////		<div
+////			className="row no-gutters"
+////			onChange={(evt) => {
+////				this.setState({ inputGender: evt.target.value });
+////			}}
+////		>
+////			<label className="col-6 formElements__radio_itemWrapper">
+////				<input
+////					type="radio"
+////					checked={this.state.inputGender == "" ? false : null}
+////					name="gender"
+////					value="male"
+////					className="formElements__radio_defaultRadio"
+////				/>
+////				<div className="formElements__radio_customRadio" />
+////				<div className="formElements__radio_label">Male</div>
+////			</label>
+////			<label className="col-6 formElements__radio_itemWrapper">
+////				<input
+////					type="radio"
+////					checked={this.state.inputGender == "" ? false : null}
+////					name="gender"
+////					value="female"
+////					className="formElements__radio_defaultRadio"
+////				/>
+////				<div className="formElements__radio_customRadio" />
+////				<div className="formElements__radio_label">Female</div>
+////			</label>
+////		</div>
+////		<div className="fixedDropdownErrorMsg">Please select an option.</div>
+////	</div>
 ////
 ////  	========================================================================
 ////	*** CHECKBOXES (Supports multiple selection)
-//// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .js-formElements__group
+//// 	**** REQUIRED CLASSES: .js-multiInputWrapper,  .js-isRequired, .formElements__group
 ////  	========================================================================
-////
-////    // ====
-////	// JS handler
-////	// ====
-//// 	// Handle find method checkbox onClick
-//// 	handleFindMethod = (evt) => {
-//// 		const val = evt.target.value;
-//// 		const isChecked = evt.target.checked;
-////
-//// 		this.setState(
-//// 			(prevState) => ({
-//// 				inputFindMethod: prevState.inputFindMethod.set(val, isChecked)
-//// 			})
-//// 		);
-//// 	};
-////
-//// 	// ====
-////	// HTML
-////	// ====
-//// 	<div className="js-multiInputWrapper js-isRequired js-formElements__group">
-//// 		<label className="quoteForm__header">REPLACE ME</label>
-//// 		<div className="clearfix">
-//// 			{this.findMethods.map((item, index) => {
-//// 				return (
-//// 					<label key={index} className="REPLACE_ME_CLASS_WRAPPER">
-//// 						<input
-//// 							type="checkbox"
-//// 							checked={this.state.checkedItems.get(item.value)}
-//// 							name="REPLACE_ME_NAME"
-//// 							value={item.value}
-//// 							className="quoteForm__defaultInputEl--checkbox"
-//// 							onChange={this.handleFindMethod}
-//// 						/>
-//// 						<div className="quoteForm__customInputEl--checkbox" />
-//// 						<div className="quoteForm__checkboxLabel">{item.label}</div>
-//// 					</label>
-//// 				);
-//// 			})}
-//// 		</div>
-//// 		<div className="fixedDropdownErrorMsg is--dNone">Please select an option.</div>
-//// 	</div>
-
+////	<div className="js-multiInputWrapper js-isRequired w-100 formElements__group">
+////		<label className="formElements__label">Select the required trips</label>
+////		<div
+////			className="row no-gutters"
+////			onChange={(evt) => {
+////				this.handleShiftPushIntoArray(evt);
+////			}}
+////		>
+////			<label className="col-6 formElements__checkbox_itemWrapper">
+////				<input
+////					type="checkbox"
+////					checked={this.state.inputTripDayShift == "" ? false : null}
+////					value="AM"
+////					className="formElements__checkbox_defaultCheckbox"
+////				/>
+////				<div className="formElements__checkbox_customCheckbox" />
+////				<div className="formElements__checkbox_label label__twoLine">
+////					<p className="header--16">Morning</p>
+////					<p>Bus to School</p>
+////				</div>
+////			</label>
+////			<label className="col-6 formElements__checkbox_itemWrapper">
+////				<input
+////					type="checkbox"
+////					checked={this.state.inputTripDayShift == "" ? false : null}
+////					value="PM"
+////					className="formElements__checkbox_defaultCheckbox"
+////				/>
+////				<div className="formElements__checkbox_customCheckbox" />
+////				<div className="formElements__checkbox_label label__twoLine">
+////					<p className="header--16">Afternoon</p>
+////					<p>Bus from School</p>
+////				</div>
+////			</label>
+////		</div>
+////		<div className="fixedDropdownErrorMsg">Please select an option.</div>
+////	</div>
 ////
 ////
 ////  	========================================================================
@@ -166,7 +136,6 @@
 ////  	========================================================================
 //// 	<button type="submit">Log In</button>
 //// </Form>
-////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 import React, { Component } from "react";
@@ -217,18 +186,18 @@ class Form extends React.Component {
 			// Target dropdown inputs
 			if (this.formEl[i].tagName == "SELECT" && this.formEl[i].required && this.formEl[i].value != "placeholderVal") {
 				// Triggers when value is no longer default (placeholderVal)
-				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.add("is--dNone");
+				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.remove("d-block");
 				this.formEl[i].classList.remove("is--error");
 			}
 
 			// Target date inputs
 			if (this.formEl[i].classList.contains("formElements__date") && this.formEl[i].value != "") {
-				// Target the closest [js-formElements__group] and search for its own
+				// Target the closest [formElements__group] and search for its own
 				// corresponding fixedDropdownErrorMsg toggle off hidden state
 				this.formEl[i]
-					.closest(".js-formElements__group")
+					.closest(".formElements__group")
 					.querySelector(".fixedDropdownErrorMsg")
-					.classList.add("is--dNone");
+					.classList.remove("d-block");
 				// Add red borders
 				this.formEl[i].classList.remove("is--error");
 			}
@@ -251,7 +220,7 @@ class Form extends React.Component {
 								this.formEl[i]
 									.closest(".js-multiInputWrapper")
 									.querySelector(".fixedDropdownErrorMsg")
-									.classList.add("is--dNone");
+									.classList.remove("d-block");
 							}
 						});
 				}
@@ -349,7 +318,7 @@ class Form extends React.Component {
 				// If validation fails
 				isValid = false;
 
-				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.remove("is--dNone");
+				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.add("d-block");
 				this.formEl[i].classList.add("is--error");
 			}
 
@@ -358,12 +327,12 @@ class Form extends React.Component {
 				// If validation fails
 				isValid = false;
 
-				// Target the closest [js-formElements__group] and search for its own
+				// Target the closest [formElements__group] and search for its own
 				// corresponding fixedDropdownErrorMsg toggle off hidden state
 				this.formEl[i]
-					.closest(".js-formElements__group")
+					.closest(".formElements__group")
 					.querySelector(".fixedDropdownErrorMsg")
-					.classList.remove("is--dNone");
+					.classList.add("d-block");
 				// Add red borders
 				this.formEl[i].classList.add("is--error");
 			}
@@ -379,7 +348,7 @@ class Form extends React.Component {
 					this.formEl[i]
 						.closest(".js-multiInputWrapper")
 						.querySelector(".fixedDropdownErrorMsg")
-						.classList.remove("is--dNone");
+						.classList.add("d-block");
 
 					// Loop through all children input elements to check if theres at least one checked
 					this.formEl[i]
@@ -394,7 +363,7 @@ class Form extends React.Component {
 								this.formEl[i]
 									.closest(".js-multiInputWrapper")
 									.querySelector(".fixedDropdownErrorMsg")
-									.classList.add("is--dNone");
+									.classList.remove("d-block");
 							}
 						});
 				}
