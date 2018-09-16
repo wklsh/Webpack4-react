@@ -6,7 +6,7 @@ import { test } from "./test";
 const persistConfig = {
 	key: "root",
 	storage: storage,
-	blacklist: ["test"]
+	whitelist: ["test"]
 };
 
 const reducers = persistCombineReducers(persistConfig, { test });
