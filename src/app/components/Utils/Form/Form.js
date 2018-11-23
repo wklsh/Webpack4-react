@@ -186,7 +186,7 @@ class Form extends React.Component {
 			// Target dropdown inputs
 			if (this.formEl[i].tagName == "SELECT" && this.formEl[i].required && this.formEl[i].value != "placeholderVal") {
 				// Triggers when value is no longer default (placeholderVal)
-				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.remove("d-block");
+				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").setAttribute("style", "display: none;");
 				this.formEl[i].classList.remove("is--error");
 			}
 
@@ -197,7 +197,7 @@ class Form extends React.Component {
 				this.formEl[i]
 					.closest(".formElements__group")
 					.querySelector(".fixedDropdownErrorMsg")
-					.classList.remove("d-block");
+					.setAttribute("style", "display: none");
 				// Add red borders
 				this.formEl[i].classList.remove("is--error");
 			}
@@ -220,7 +220,7 @@ class Form extends React.Component {
 								this.formEl[i]
 									.closest(".js-multiInputWrapper")
 									.querySelector(".fixedDropdownErrorMsg")
-									.classList.remove("d-block");
+									.setAttribute("style", "display: none;");
 							}
 						});
 				}
@@ -318,7 +318,7 @@ class Form extends React.Component {
 				// If validation fails
 				isValid = false;
 
-				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").classList.add("d-block");
+				this.formEl[i].parentNode.querySelector(".fixedDropdownErrorMsg").setAttribute("style", "display: block");
 				this.formEl[i].classList.add("is--error");
 			}
 
@@ -332,7 +332,7 @@ class Form extends React.Component {
 				this.formEl[i]
 					.closest(".formElements__group")
 					.querySelector(".fixedDropdownErrorMsg")
-					.classList.add("d-block");
+					.setAttribute("style", "display: block");
 				// Add red borders
 				this.formEl[i].classList.add("is--error");
 			}
@@ -344,11 +344,13 @@ class Form extends React.Component {
 					// Make the form invalid first, so that subsequent checks makes the form valid instead
 					// Add error borders
 					this.formEl[i].closest(".js-multiInputWrapper").classList.add("is--error");
+					// Remove valid class
+					this.formEl[i].closest(".js-multiInputWrapper").classList.remove("is--valid");
 					// Show error message
 					this.formEl[i]
 						.closest(".js-multiInputWrapper")
 						.querySelector(".fixedDropdownErrorMsg")
-						.classList.add("d-block");
+						.setAttribute("style", "display: block");
 
 					// Loop through all children input elements to check if theres at least one checked
 					this.formEl[i]
@@ -359,11 +361,13 @@ class Form extends React.Component {
 							if (item.checked) {
 								// Remove error borders
 								item.closest(".js-multiInputWrapper").classList.remove("is--error");
+								// Add valid class
+								item.closest(".js-multiInputWrapper").classList.add("is--valid");
 								// Remove error message
 								this.formEl[i]
 									.closest(".js-multiInputWrapper")
 									.querySelector(".fixedDropdownErrorMsg")
-									.classList.remove("d-block");
+									.setAttribute("style", "display: none;");
 							}
 						});
 				}
@@ -407,6 +411,15 @@ class Form extends React.Component {
 			// Final Loop
 			// -
 			if (i == this.formEl.length - 1) {
+				// Final check to compare multiple dropbox box wrappers,
+				// if the total number of isRequired wrappers correlate with the number of valid ones.
+				if (
+					this.formEl.querySelectorAll(".js-multiInputWrapper.js-isRequired").length !=
+					this.formEl.querySelectorAll(".js-multiInputWrapper.js-isRequired.is--valid").length
+				) {
+					isValid = false;
+				}
+
 				// Only return on the last loop to prevent function from exiting prematurely
 				return isValid;
 			}
