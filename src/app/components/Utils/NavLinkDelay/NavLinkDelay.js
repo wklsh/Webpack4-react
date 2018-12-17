@@ -31,22 +31,34 @@ class NavLinkDelay extends Component {
 		this.checkActiveOnMount();
 	}
 
-	// Check active
-	checkActiveOnMount = () => {
-		// Alias
-		const currPathname = this.props.history.location.pathname;
+	// Lifecycle
+	componentDidUpdate() {
+		this.checkActiveOnMount();
+	}
 
-		// Check current pathname with destination route.
-		// If it is the same, apply active state.
-		// Or else set it back to false
-		if (currPathname.includes(this.props.to) && this.props.to != "/") {
-			this.setState({
-				isItemActive: true
-			});
-		} else {
-			this.setState({
-				isItemActive: false
-			});
+	/************************************************************
+	 * Compare [to] prop with current location pathname.
+	 * apply active class if both of them matches,
+	 * and remove the active class if they do not.
+	 *
+	 * @return 		State update for [isItemActive]
+	 ************************************************************/
+	checkActiveOnMount = () => {
+		// If URL matches with [to] prop
+		if (this.props.to == this.props.location.pathname) {
+			if (!this.state.isItemActive) {
+				this.setState({
+					isItemActive: true
+				});
+			}
+		}
+		// If URL does NOT match with [to] prop
+		else {
+			if (this.state.isItemActive) {
+				this.setState({
+					isItemActive: false
+				});
+			}
 		}
 	};
 
@@ -67,6 +79,7 @@ class NavLinkDelay extends Component {
 	render() {
 		return (
 			<a
+				style={{ cursor: "pointer" }}
 				onClick={(evt) => this.handleLinkClick(evt, this.props.to)}
 				className={`${this.props.className} ${this.state.isItemActive ? this.props.activeClassName : ""}`}
 			>
