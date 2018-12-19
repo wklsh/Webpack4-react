@@ -45,7 +45,7 @@ class NavLinkDelay extends Component {
 	 ************************************************************/
 	checkActiveOnMount = () => {
 		// If URL matches with [to] prop
-		if (this.props.to == this.props.location.pathname) {
+		if (this.props.location.pathname.indexOf(this.props.to) > -1) {
 			if (!this.state.isItemActive) {
 				this.setState({
 					isItemActive: true
