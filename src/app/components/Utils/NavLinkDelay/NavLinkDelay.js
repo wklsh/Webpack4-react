@@ -62,25 +62,28 @@ class NavLinkDelay extends Component {
 		}
 	};
 
-	// Handler
+	/*************************************************************************************
+	 * OnClick handler-
+	 * Function to be called upon every click on a NavLinkDelay item.
+	 *
+	 * @param  {Obj} evt	Contains event scope for any needed referrence
+	 * @return      		Runs callback function (if exists) after specified delay
+	 *************************************************************************************/
 	handleLinkClick = (evt) => {
-		// Only run the function if current pathname is not the same as destination route
-		if (this.props.history.location.pathname != this.props.to) {
-			this.props.onClick(evt); // Run onClick func
+		this.props.onClick(evt); // Run onClick func
 
-			// Re-route page after delay
-			setTimeout(() => {
-				this.props.onEnd(evt); // Run onEnd func
-				this.props.history.push(this.props.to); // Redirect
-			}, this.props.delay);
-		}
+		// Re-route page after delay
+		setTimeout(() => {
+			this.props.onEnd(evt); // Run onEnd func
+			this.props.history.push(this.props.to); // Redirect
+		}, this.props.delay);
 	};
 
 	render() {
 		return (
 			<a
 				style={{ cursor: "pointer" }}
-				onClick={(evt) => this.handleLinkClick(evt, this.props.to)}
+				onClick={(evt) => this.handleLinkClick(evt)}
 				className={`${this.props.className} ${this.state.isItemActive ? this.props.activeClassName : ""}`}
 			>
 				{this.props.children}
