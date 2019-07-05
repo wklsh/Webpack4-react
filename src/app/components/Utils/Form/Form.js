@@ -452,7 +452,7 @@ class Form extends React.Component {
 	 * Render the component as a regular form element with appended children from props.
 	 **/
 	render() {
-		const props = [...this.props];
+		const props = {...this.props};
 
 		//Add bootstrap's 'was-validated' class to the forms classes to support its styling
 		let classNames = [];
