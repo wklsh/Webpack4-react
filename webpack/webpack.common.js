@@ -114,6 +114,7 @@ module.exports = {
     extensions: ['.jsx', '.js', '.scss', '.css'],
     alias: {
       Src: path.resolve(__dirname, '../src'),
+      Styles: path.resolve(__dirname, '../src/app/base/styles'),
     },
   },
 
