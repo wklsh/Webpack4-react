@@ -8,12 +8,12 @@ import { PersistGate } from 'redux-persist/integration/react';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+import { store, persistor } from './base/configureStore';
+import App from './base/App';
+
 if (process.env.NODE_ENV === 'production') {
   require('offline-plugin/runtime').install();
 }
-
-import { store, persistor } from './base/configureStore';
-import App from './base/App';
 
 /**
  * Do feature detection, to figure out which polyfills needs to be imported.

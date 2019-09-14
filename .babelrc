@@ -1,25 +1,21 @@
 {
-	presets: ["es2015", "stage-0", "react"],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": 3,
+        "targets": {
+          "browsers": ["last 2 version", "ie >= 11"]
+        }
+      }
+    ],
+    "@babel/preset-react"
+  ],
 
-	plugins: [
-		[
-			"react-css-modules",
-			{
-				filetypes: {
-					".scss": {
-						syntax: "postcss-scss"
-					}
-				},
-				context: "src",
-				exclude: "node_modules",
-				webpackHotModuleReloading: true
-			}
-		]
-	],
-
-	env: {
-		build: {
-			optional: ["optimisation", "minification"]
-		}
-	}
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-class-properties",
+    "react-css-modules"
+  ]
 }
