@@ -32,7 +32,6 @@ class App extends PureComponent {
           ]}
         />
         <div className="app__main">
-          <h1>App</h1>
           <Routes />
         </div>
       </>
