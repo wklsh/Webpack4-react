@@ -6,46 +6,48 @@ img:not([alt]) {
   border: 1px solid red !important;
 }
 
-.clearfix::after {
-  content: '';
-  clear: both;
-  display: table;
-}
-
-.test {
-  border: 1px solid red !important;
-  color: red !important;
-}
-
-.is {
-  &--dNone {
-    display: none !important;
+:global {
+  .clearfix::after {
+    content: '';
+    clear: both;
+    display: table;
   }
 
-  &--hidden {
-    visibility: hidden !important;
-  }
-}
-
-.animate {
-  &,
-  &::before,
-  &::after {
-    transition: all 0.4s $easeOutQuart;
+  .test {
+    border: 1px solid red !important;
+    color: red !important;
   }
 
-  &Slow {
+  .is {
+    &--dNone {
+      display: none !important;
+    }
+
+    &--hidden {
+      visibility: hidden !important;
+    }
+  }
+
+  .animate {
     &,
     &::before,
     &::after {
-      transition: all 0.8s $easeOutCubic;
+      transition: all 0.4s $easeOutQuart;
+    }
+
+    &Slow {
+      &,
+      &::before,
+      &::after {
+        transition: all 0.8s $easeOutCubic;
+      }
     }
   }
-}
 
-.click-efx {
-  &:active {
-    transform: translateY(1px);
-    transition-duration: 0.1s;
+  .click-efx {
+    &:active {
+      transform: translateY(1px);
+      transition-duration: 0.1s;
+    }
   }
 }

@@ -74,6 +74,11 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              modules: true,
+              localIdentName:
+                process.env.NODE_ENV !== 'production' ? '[name]---[local]' : '[hash:base64:8]',
+              camelCase: true,
+              url: false,
               sourceMap: process.env.NODE_ENV !== 'production',
             },
           },
