@@ -41,11 +41,11 @@
 
  USAGE:
  div {
-	@include get-spacing(100);
+	@include font-spacing(100);
 	*use value from photoshop*
  }
  --------------------------------------------------------------------------------------*/
-@mixin get-spacing($tracking) {
+@mixin font-spacing($tracking) {
   $tracking: ($tracking / 1000) * 1em;
   letter-spacing: $tracking;
 }
