@@ -1,6 +1,8 @@
 import { persistCombineReducers } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import { apiReducer } from './api';
+
 const storageConfig = {
   key: 'primary',
   storage,
@@ -8,7 +10,7 @@ const storageConfig = {
 };
 
 const reducers = persistCombineReducers(storageConfig, {
-  // Reducer
+  api: apiReducer,
 });
 
 export default reducers;

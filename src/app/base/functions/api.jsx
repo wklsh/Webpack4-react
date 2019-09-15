@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
+import { has } from 'lodash';
 
-import { baseEndpointURL } from "../config";
-import { store } from "../configureStore";
-import { errorCodeSelector } from "../../redux/api";
+import { baseEndpointURL, endpointCreds } from '../config';
+import { store } from '../configureStore';
 
 /**
  * helper method for axios
@@ -11,53 +11,85 @@ import { errorCodeSelector } from "../../redux/api";
  * @return {promise} promise created via axios
  */
 export default function(type) {
-	let config = {
-		baseURL: baseEndpointURL,
-	};
+  const storedAccessToken = store.getState().authentication.accessToken;
 
-	const custom = axios.create(config);
-	custom.interceptors.response.use(
-		function(response) {
-			// errorCode check for rtt api response
-			// status check for stripe api response
-			if (
-				response.data.errorCode !== 0 &&
-				(!Object(response.data).hasOwnProperty("errorCode") &&
-					response.status !== 200)
-			) {
-				// dispatch the error state depend on error code
-				store.dispatch({ type: `${type}_ERROR`, error: response.data });
+  let Authorization = '';
+  if (storedAccessToken) {
+    Authorization = `Bearer ${storedAccessToken}`;
+  } else if (endpointCreds) {
+    Authorization = endpointCreds;
+  }
 
-				return null;
-			}
+  const config = {
+    baseURL: baseEndpointURL,
+    headers: {
+      Authorization,
+    },
+  };
 
-			handleSessionExpiry(response);
-			return response;
-		},
-		function(error) {
-			// dispatch the error state with error param
-			store.dispatch({ type: `${type}_ERROR`, error });
-			handleSessionExpiry(error.response);
-			return Promise.reject(error);
-		}
-	);
+  const custom = axios.create(config);
+  custom.interceptors.response.use(
+    response => {
+      console.log(
+        'Boilerplate: Check response status codes to ensure errors are dispatched out correctly'
+      );
 
-	return custom;
+      // Check if its a error response
+      if (response.data.StatusCode !== 200) {
+        store.dispatch({
+          type: `${type}_ERROR`,
+          error: response.data,
+        });
+
+        return null;
+      }
+
+      return response;
+    },
+    error => {
+      // dispatch the error state with error param
+      store.dispatch({
+        type: `${type}_ERROR`,
+        error: error.response.data,
+      });
+      return Promise.reject(error.response.data);
+    }
+  );
+
+  return custom;
 }
 
 /**
- * session can expire when user logs out on other devices / browsers / computers
+ * attempt to extract xhr error message from a variety of formats
+ * @param  {object} 	err 	xhr response object
+ * @return {string}     		extracted error message
  */
-function handleSessionExpiry(res) {
-	if (!res || res.status !== 401) return;
+export function getErrorMessage(err) {
+  let returnVal;
 
-	const facebookVerifyErrorCode = errorCodeSelector(FACEBOOK_VERIFY);
-	// 155 = registered via facebook before
-	// 164 = no email addres in facebook response
-	if ([155, 164].includes(facebookVerifyErrorCode)) return;
+  if (has(err, 'Message')) {
+    returnVal = err.Message;
+  }
 
-	const reduxStore = store.getState();
-	if (reduxStore.ui.showAuthentication !== "log-in") {
-		store.dispatch(sessionExpiry());
-	}
+  return returnVal;
+}
+
+/**
+ * get errorCode from endpoints
+ * fallback to statusCode if errorCode is not available
+ * @param  {object}     res     xhr response object
+ * @return {number}             error code
+ */
+export function getErrorCode(err) {
+  if (!err) return 0;
+  let code = null;
+  if (err) {
+    if (err.data) {
+      code = err.data.ErrorCode;
+    }
+  }
+  if (!code && err) {
+    code = err.StatusCode;
+  }
+  return code || 0;
 }
