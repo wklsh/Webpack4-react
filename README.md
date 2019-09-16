@@ -1,4 +1,11 @@
-# Webpack 4 Static HTML webpack boilerplate
+# Webpack 4 React boilerplate
+
+## Front-end Technologies
+```javascript
+- React
+- Redux & immer
+- SCSS & CSS Modules
+```
 
 ## Start DEV environment
 
