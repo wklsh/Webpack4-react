@@ -25,7 +25,8 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "airbnb",
-    "prettier"
+    "prettier",
+    "prettier/react"
   ],
   "globals": {
     "window": true,
@@ -33,10 +34,11 @@
   },
   "settings": {
     "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      "webpack": {
+        "config": "./webpack/webpack.common.js"
       }
-    }
+    },
+    "import/extensions": [".js", ".jsx"]
   },
   "rules": {
     "array-callback-return": "warn",
@@ -173,6 +175,8 @@
     "no-console": "off",
     // custom overwrites:
     "global-require": 0,
-    "import/no-cycle": 0
+    "import/no-cycle": 0,
+    "no-shadow": "off",
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["draft"] }] // immer whitelisting
   }
 }

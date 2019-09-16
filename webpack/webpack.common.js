@@ -116,11 +116,12 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.jsx', '.js', '.scss', '.css'],
     alias: {
       Src: path.resolve(__dirname, '../src'),
+      Redux: path.resolve(__dirname, '../src/app/redux'),
       Styles: path.resolve(__dirname, '../src/app/base/styles'),
     },
+    extensions: ['.jsx', '.js', '.scss', '.css'],
   },
 
   plugins: [
