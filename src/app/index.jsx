@@ -41,11 +41,4 @@ const render = component =>
     ReactDOM.hydrate(AppBundle(component), document.getElementById('root'))
   );
 
-if (module.hot) {
-  module.hot.accept('./base/App', () => {
-    const NextRootContainer = import('./base/App').default;
-    render(NextRootContainer, true);
-  });
-}
-
 render(App);
