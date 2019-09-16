@@ -1,7 +1,7 @@
 {
-  "name": "webpack-boilerplate",
+  "name": "webpack-react-boilerplate",
   "version": "1.0.0",
-  "description": "Static HTML webpack 4 boilerplae",
+  "description": "Webpack 4 react boilerplae",
   "private": true,
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --mode development --config webpack/webpack.dev.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wklsh/webpack4-html-static"
+    "url": "https://github.com/wklsh/Webpack4-react"
   },
   "keywords": [],
   "author": "WKLSH",
@@ -79,7 +79,6 @@
     "react-loadable": "^5.5.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
-    "react-transition-group": "^4.2.2",
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
