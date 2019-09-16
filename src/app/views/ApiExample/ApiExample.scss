@@ -1,0 +1,62 @@
+@import '~Styles/utils/_mixins';
+@import '~Styles/utils/_variables';
+
+.nameplate {
+  margin-bottom: 10px;
+}
+
+.item {
+  &Wrapper {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  &Title {
+    @include font-weight(bold);
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  &Status {
+    font-size: 1.4rem;
+  }
+}
+
+.hyperlink {
+  text-decoration: underline;
+  color: black;
+}
+
+.object {
+  &Wrapper {
+    background: $WhiteSmoke;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+    padding: 20px;
+  }
+
+  &Label {
+    @include font-weight(bold);
+    margin-bottom: 5px;
+  }
+
+  &Item {
+    &Wrapper {
+      padding: 5px;
+    }
+
+    &Title {
+      @include font-weight(bold);
+      font-size: 1.4rem;
+      border-bottom: 1px solid black;
+      display: inline-block;
+    }
+
+    &Key {
+      font-size: 1.4rem;
+    }
+  }
+}

@@ -8,9 +8,9 @@ const settings = {
 
 switch (process.env.NODE_ENV) {
   case 'development':
-    settings.endpointDomain = 'http://api-staging.com/';
+    settings.endpointDomain = 'https://jsonplaceholder.typicode.com';
     settings.endpointVersion = 'v1';
-    settings.baseEndpointURL = `${settings.endpointDomain}${settings.endpointVersion}/api/`;
+    settings.baseEndpointURL = `${settings.endpointDomain}`;
     settings.endpointLogin = 'username';
     settings.endpointPassword = 'password';
     settings.endpointCreds = `Basic ${btoa(
@@ -19,7 +19,7 @@ switch (process.env.NODE_ENV) {
     break;
 
   case 'staging':
-    settings.endpointDomain = 'http://api-staging.com/';
+    settings.endpointDomain = 'http://api-staging.com';
     settings.endpointVersion = 'v1';
     settings.baseEndpointURL = `${settings.endpointDomain}${settings.endpointVersion}/api/`;
     settings.endpointLogin = 'username';
@@ -30,7 +30,7 @@ switch (process.env.NODE_ENV) {
     break;
 
   case 'production':
-    settings.endpointDomain = 'http://api-production.com/';
+    settings.endpointDomain = 'http://api-production.com';
     settings.endpointVersion = 'v1';
     settings.baseEndpointURL = `${settings.endpointDomain}${settings.endpointVersion}/api/`;
     settings.endpointLogin = 'username';
