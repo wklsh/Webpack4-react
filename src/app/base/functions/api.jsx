@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { has } from 'lodash';
 
 import { baseEndpointURL, endpointCreds } from '../config';
 import { store } from '../configureStore';
@@ -11,9 +10,12 @@ import { store } from '../configureStore';
  * @return {promise} promise created via axios
  */
 export default function(type) {
-  const storedAccessToken = store.getState().authentication.accessToken;
+  const storedAccessToken = store.getState().authentication
+    ? store.getState().authentication.accessToken
+    : null;
 
-  let Authorization = '';
+  // determine auth token type to use - Basic | Bearer
+  let Authorization;
   if (storedAccessToken) {
     Authorization = `Bearer ${storedAccessToken}`;
   } else if (endpointCreds) {
@@ -27,15 +29,15 @@ export default function(type) {
     },
   };
 
+  console.warn(
+    'Boilerplate: Check api status code naming to ensure responses are dispatched out correctly.'
+  );
+
   const custom = axios.create(config);
   custom.interceptors.response.use(
     response => {
-      console.log(
-        'Boilerplate: Check response status codes to ensure errors are dispatched out correctly'
-      );
-
-      // Check if its a error response
-      if (response.data.StatusCode !== 200) {
+      // TODO: Append condition logic to match project's API response format
+      if (response.status !== 200) {
         store.dispatch({
           type: `${type}_ERROR`,
           error: response.data,
@@ -47,31 +49,17 @@ export default function(type) {
       return response;
     },
     error => {
-      // dispatch the error state with error param
+      // TODO: Append condition logic to match project's API response format
       store.dispatch({
         type: `${type}_ERROR`,
-        error: error.response.data,
+        error: error.response,
       });
-      return Promise.reject(error.response.data);
+
+      return Promise.reject(error.response);
     }
   );
 
   return custom;
-}
-
-/**
- * attempt to extract xhr error message from a variety of formats
- * @param  {object} 	err 	xhr response object
- * @return {string}     		extracted error message
- */
-export function getErrorMessage(err) {
-  let returnVal;
-
-  if (has(err, 'Message')) {
-    returnVal = err.Message;
-  }
-
-  return returnVal;
 }
 
 /**
@@ -81,7 +69,11 @@ export function getErrorMessage(err) {
  * @return {number}             error code
  */
 export function getErrorCode(err) {
+  console.warn('Boilerplate: Check api error response to ensure error code is captured properly.');
+  // TODO: Append condition logic to match project's API response format
+
   if (!err) return 0;
+
   let code = null;
   if (err) {
     if (err.data) {

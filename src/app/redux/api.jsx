@@ -5,7 +5,7 @@ import { store } from '../base/configureStore';
  * Handle all of the loading, failure and success of each asynchronous api call in a single file.
  * updates store with [loading state, success state, error state, error code]
  */
-import { getErrorMessage, getErrorCode } from '../base/functions';
+import { getErrorCode } from '../base/functions/api';
 
 export function apiReducer(state = {}, action) {
   const { type, payload, error } = action;
@@ -19,13 +19,13 @@ export function apiReducer(state = {}, action) {
   return immer(state, draft => {
     if (requestState === 'RESET') {
       draft.status = type;
-      draft[requestName] = [false, false, ''];
+      draft[requestName] = [false, false, {}];
     } else {
       draft.status = type;
       draft[requestName] = [
         requestState === 'LOADING',
-        requestState === 'SUCCESS' ? payload || true : false,
-        requestState === 'ERROR' ? getErrorMessage(error) : '',
+        requestState === 'SUCCESS' ? payload || {} : null,
+        requestState === 'ERROR' ? error : {},
         getErrorCode(error),
       ];
     }
