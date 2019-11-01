@@ -63,10 +63,8 @@ img:not([alt]) {
     }
   }
 
-  .click-efx {
-    &:active {
-      transform: translateY(1px);
-      transition-duration: 0.1s;
-    }
+  .buttonEffect:active {
+    transform: translateY(1px);
+    transition-duration: 0.1s;
   }
 }
