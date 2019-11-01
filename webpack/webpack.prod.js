@@ -53,8 +53,11 @@ module.exports = merge(common, {
       ],
     }),
 
-    new FaviconsWebpackPlugin('./src/favicon.png'),
-
     new OfflinePlugin(),
+    
+    new FaviconsWebpackPlugin({
+			logo: "./src/favicon.png",
+			prefix: "favicons/",
+		}),
   ],
 });
