@@ -11,8 +11,9 @@ import 'regenerator-runtime/runtime';
 import { store, persistor } from './base/configureStore';
 import App from './base/App';
 
-if (process.env.NODE_ENV === 'production') {
-  require('offline-plugin/runtime').install();
+if (process.env.NODE_ENV === "production") {
+	console.log("Installing Offline-plugin");
+	require("offline-plugin/runtime").install();
 }
 
 /**
