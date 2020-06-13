@@ -63,9 +63,12 @@ img:not([alt]) {
     }
   }
 
-  .buttonEffect:active {
-    transform: translateY(1px);
-    transition-duration: 0.1s;
-    cursor: pointer;
-  }
+  .buttonEffect {
+		cursor: pointer;
+
+		&:active {
+			transform: translateY(1px);
+			transition-duration: 0.1s;
+		}
+	}
 }
