@@ -73,7 +73,7 @@
 		"axios": "^0.19.0",
 		"core-js": "^3.2.0",
 		"immer": "^3.2.0",
-		"lodash": "^4.17.15",
+		"lodash": "^4.17.19",
 		"offline-plugin": "^5.0.7",
 		"promise-polyfill": "^8.1.3",
 		"prop-types": "^15.7.2",
